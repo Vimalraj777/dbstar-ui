@@ -1,0 +1,119 @@
+<div class="container">
+    <div class="row">
+        <h2 style="background-color:#155B97;text-align:center;color:white;">Registration</h2>
+    </div>
+
+    <form [formGroup]="registerForm" (ngSubmit)="submit()">
+        <div class="row">
+            <div class="col-md-1"></div>
+
+
+            <div class="col-md-4 ms-5">
+
+                <div class="row mt-5">
+                    <label><b>Roll No</b></label>
+                    <input class="form-control" type="text" formControlName="id" placeholder="  Enter Your Roll No"
+                        required>
+                    <div *ngIf="registerForm.get('id')?.invalid && registerForm.get('id')?.touched" style="color:red;">
+                        required</div>
+                </div>
+
+                <div class="row mt-3">
+                    <label><b>Password</b></label>
+                    <input class="form-control" type="text" formControlName="password" placeholder="Enter Password"
+                        required>
+                    <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched"
+                        style="color:red;">required</div>
+                </div>
+
+                <div class="row mt-3">
+                    <label><b>Age</b></label>
+                    <input class="form-control" type="text" formControlName="age" placeholder="Enter Your Age" required>
+                    <div *ngIf="registerForm.get('age')?.invalid && registerForm.get('age')?.touched"
+                        style="color:red;">required</div>
+                </div>
+
+                <div class="row mt-3">
+                    <label><b>Father Name</b></label>
+                    <input class="form-control" type="text" formControlName="fname"
+                        placeholder="Enter Your Father Name" required>
+                    <div *ngIf="registerForm.get('fname')?.invalid && registerForm.get('fname')?.touched"
+                        style="color:red;">required</div>
+                </div>
+
+                <div class="row mt-3">
+                    <label><b>Phone Number</b></label>
+                    <input class="form-control" type="number" formControlName="phnumber"
+                        placeholder="Enter Your Phone Number" required>
+                    <div *ngIf="registerForm.get('phnumber')?.invalid && registerForm.get('phnumber')?.touched"
+                        style="color:red;">required</div>
+                </div>
+            </div>
+
+
+            <div class="col-md-1"></div>
+
+            <div class="col-md-4">
+
+                <div class="row mt-5">
+                    <label><b>User Name</b></label>
+                    <input class="form-control" type="text" formControlName="username" placeholder="Enter User Name"
+                        required>
+                    <div *ngIf="registerForm.get('username')?.invalid && registerForm.get('username')?.touched"
+                        style="color:red;">required</div>
+                </div>
+
+                <div class="row mt-3">
+                    <label><b>Name</b></label>
+                    <input class="form-control" type="text" formControlName="name" placeholder="Enter Your Name"
+                        required>
+                    <div *ngIf="registerForm.get('name')?.invalid && registerForm.get('name')?.touched"
+                        style="color:red;">required</div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <span><b>Gender</b></span><br />
+                        <input type="radio" formControlName="gender" value="male">Male
+                        <input class="ms-2" type="radio" formControlName="gender" value="female">FeMale
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <label><b>Mother Name</b></label>
+                    <input class="form-control" type="text" formControlName="mname" placeholder="Enter Your Mother Name"
+                        required>
+                    <div *ngIf="registerForm.get('mname')?.invalid && registerForm.get('mname')?.touched"
+                        style="color:red;">required</div>
+                </div>
+
+                <div class="row mt-3">
+                    <label><b>Address</b></label>
+                    <textarea class="form-control" formControlName="address" placeholder="Enter Your Address"
+                        required></textarea>
+                    <div *ngIf="registerForm.get('address')?.invalid && registerForm.get('address')?.touched"
+                        style="color:red;">required</div>
+                </div>
+            </div>
+
+
+
+            <div class="row mt-4">
+                <div class="col-md-4"></div>
+                <div class="col-md-1 mt-1">
+                    <button routerLink="/" class="btn btn-secondary">Cancel</button>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="col-md-1">
+                    <button class="btn btn-success" type="submit">Register</button>
+                </div>
+
+            </div>
+
+
+
+            <div class="col-md-1"></div>
+        </div>
+    </form>
+
+</div>

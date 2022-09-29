@@ -1,0 +1,80 @@
+<div class="card">
+    <div class="card-body">
+<div class="card-title row">
+    <h2 style="background-color: #155B97;text-align:center;color:white">User Profile</h2>
+</div>
+<div class="container" style="background-color: white;">
+
+<form [formGroup]="profileForm">
+<div class="card-text row mt-2">
+
+    <div class="col-md-1"></div>
+    <div class="col-md-4">
+        <div class="row mt-1">
+            <label><b>Roll No</b></label>
+            <br/><input type="number" formControlName="id" placeholder="ID" readonly style="background-color:gainsboro;" class="form-control"><br/><br/>
+        </div>
+        <div class="row mt-1">
+            <label><b>User Name</b></label>
+            <input type="text" formControlName="username" placeholder="User Name" readonly style="background-color:gainsboro;" class="form-control"><br/><br/>
+
+        </div>
+        
+        <div class="row mt-1">
+            <label><b>Name</b></label>
+            <input type="text" formControlName="name" placeholder="Name" class="form-control" required><br/><br/>
+            <div *ngIf="profileForm.get('name')?.invalid && profileForm.get('name')?.touched" style="color:red">required</div>
+        </div>
+        <div class="row mt-1">
+            <label><b>Age</b></label>
+            <input type="text" formControlName="age" placeholder="Age" class="form-control" required><br/><br/>
+            <div *ngIf="profileForm.get('age')?.touched && profileForm.get('age')?.invalid" style="color:red">required</div>
+        </div>
+    </div>
+
+    <div class="col-md-1"></div>
+    <div class="col-md-4">
+        <div class="row mt-1">
+            <label><b>Father Name</b></label>
+            <input type="text" formControlName="fname" placeholder="Father Name" class="form-control" required><br/><br/>
+            <div *ngIf="profileForm.get('fname')?.touched && profileForm.get('fname')?.invalid" style="color:red">required</div>
+        </div>
+        <div class="row mt-1">
+            <label><b>Mother Name</b></label>
+            <input type="text" formControlName="mname" placeholder="Mother Name" class="form-control" required><br/><br/>
+            <div *ngIf="profileForm.get('mname')?.touched && profileForm.get('mname')?.invalid" style="color: red;">required</div>
+        </div>
+ 
+        <div class="row mt-1">
+            <label><b>Phone Number</b></label>
+            <input type="text" formControlName="phnumber" placeholder="Phone Number" class="form-control" minlength="10" maxlength="10" required ><br/><br/>
+            <div *ngIf="profileForm.get('phnumber')?.touched && profileForm.get('phnumber')?.invalid" style="color:red;">Enter 10 Digits</div>
+        </div>
+        <div class="row mt-1">
+            <label><b>Address</b></label>
+            <textarea formControlName="address" placeholder="Address" class="form-control" required=""></textarea><br/><br/>
+            <div *ngIf="profileForm.get('address')?.touched && profileForm.get('address')?.invalid" style="color:red;">required</div>
+        </div>
+    </div>
+
+    <div class="col-md-2">
+    </div>
+</div> 
+
+<div class="row mt-5"></div>
+
+<div class="card-footer row">
+    <div class="col-md-2"></div>
+    <div class="col-md-1"><input type="button" value="Cancel"class="btn btn-secondary" (click)="cancel()"></div>
+    <div class="col-md-2"></div>
+    <div class="col-md-1"><input type="button" value="Save"class="btn btn-success" (click)="submit()"></div>
+    <div class="col-md-2"></div>
+    <div class="col-md-1"><input type="button" value="Delete"class="btn btn-danger" (click)="deleted()"></div>
+</div>
+
+</form>
+</div>
+</div>
+
+</div>
+
