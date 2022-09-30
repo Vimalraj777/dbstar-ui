@@ -37,11 +37,13 @@
             <mat-icon>contacts</mat-icon>User Profile
         </button>
 
-        <div *ngIf="step==1">
-        <button mat-button class="menu-button" (click)="Submit()">
+        <button mat-button class="menu-button" (click)="school()">
             <mat-icon>account_balance</mat-icon>School Profile
         </button>
-        </div>
+        
+        <button mat-button class="menu-button" (click)="viewSchool()">
+            <mat-icon>account_balance</mat-icon>View School Profile
+        </button>
 
         <button mat-button class="menu-button" (click)="logout()">
             <mat-icon>keyboard_backspace</mat-icon>Logout

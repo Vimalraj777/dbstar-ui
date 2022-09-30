@@ -4,8 +4,10 @@ import { DashboardComponent } from './View/dashboard/dashboard.component';
 import { HomeComponent } from './View/home/home.component';
 import { LoginComponent } from './View/login/login.component';
 import { RegisterComponent } from './View/register/register.component';
+import { SchoolPostComponent } from './View/school-post/school-post.component';
 import { SchoolComponent } from './View/school/school.component';
 import { UserComponent } from './View/user/user.component';
+import { ViewSchoolComponent } from './View/view-school/view-school.component';
 
 const routes: Routes = [
   {path:'',component:LoginComponent},
@@ -15,8 +17,11 @@ const routes: Routes = [
     {path:'dashboard',component:DashboardComponent},
     {path:'user',component:UserComponent},
     {path:'school',component:SchoolComponent},
+    {path:'viewschool',component:ViewSchoolComponent},
+    {path:'postschool',component:SchoolPostComponent},
             ]
   },
+  
   
 ];
 

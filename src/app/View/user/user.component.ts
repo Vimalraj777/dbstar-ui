@@ -32,7 +32,7 @@ export class UserComponent implements OnInit {
 
     })
 
-      this.subservice.profile().subscribe((arg : any)=>{
+      this.subservice.userget().subscribe((arg : any)=>{
         this.data = arg;
         this.loadData();
       })
@@ -52,8 +52,8 @@ export class UserComponent implements OnInit {
       address: [this.data.address]
     })
   }
-  submit(){
-    this.subservice.Post(this.profileForm.value).subscribe((data: any)=>{
+  update(){
+    this.subservice.updateUser(this.profileForm.value).subscribe((data: any)=>{
       console.log(data);
       this.data=data;
       if(data!=null){
@@ -82,7 +82,7 @@ export class UserComponent implements OnInit {
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.subservice.deleted().subscribe((data: any)=>{
+        this.subservice.deleteUser().subscribe((data: any)=>{
           console.log(data);
           this.data=data; 
           
@@ -93,7 +93,7 @@ export class UserComponent implements OnInit {
             icon:'success',
             timer:1500
         })
-          this.route.navigate(['/one'])
+          this.route.navigate(['/'])
         })
       }
     }) 

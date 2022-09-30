@@ -24,40 +24,46 @@ export class MainServiceService {
   }
 
   // This is profile component oninit get method
-  profile(url:any){
+  userget(url:any){
     this.token = new HttpHeaders({'Authorization':"bearer "+localStorage.getItem('token')})
     return this.http.get(this.baseurl+url, {headers:this.token})
   }
 
-  Post(url:any,data:any){
+  updateUser(url:any,data:any){
     this.token = new HttpHeaders({'Authorization':"bearer "+localStorage.getItem('token')})
     return this.http.put(this.baseurl+url,data, {headers:this.token});
   }
 
-  po(url:any,data:any){
+  postSchool(url:any,data:any){
     this.token = new HttpHeaders({'Authorization':"bearer "+localStorage.getItem('token')})
     return this.http.post(this.baseurl+url,data, {headers:this.token});
   }
 
 
-  profileget(url:any){
+  getSchool(url:any){
     this.token = new HttpHeaders({'Authorization':"bearer "+localStorage.getItem('token')})
     return this.http.get(this.baseurl+url, {headers:this.token});
   }
 
 
-  profileput(url:any,data:any){
+  updateSchool(url:any,data:any){
     this.token = new HttpHeaders({'Authorization':"bearer "+localStorage.getItem('token')})
     return this.http.put(this.baseurl+url,data, {headers:this.token});
   }
 
-  deleted(url:any){
+  deleteUser(url:any){
     this.token=new HttpHeaders({'Authorization':"bearer "+localStorage.getItem('token')})
     return this.http.delete(this.baseurl+url, {headers:this.token});
   }
 
 
-forgot(url:any,data:any){
+  pro(url:any){
+    this.token = new HttpHeaders({'Authorization':"bearer "+localStorage.getItem('token')})
+    return this.http.get(this.baseurl+url , {headers:this.token})
+  }
+
+
+forgotPassword(url:any,data:any){
   return this.http.post(this.baseurl+url,data)
 
 }
@@ -67,34 +73,45 @@ changepass(url:any,data:any){
 }
 
 
-
-
-
-  post(url:any,data:any){
+  register(url:any,data:any){
     return this.http.post(this.baseurl+url,data);
   }
 
+
+  homepageget(url:any){
+    // this.token = new HttpHeaders({'Authorization':"bearer "+localStorage.getItem('token')})
+    return this.http.get(this.baseurl+url);
+  }
+
+  getSchoolPost(path:any){
+    return this.http.get(this.baseurl+path);
+  }
+  updatePostSchool(path:any,data:any){
+    return this.http.put(this.baseurl+path,data);
+  }
+
+  postSchoolPost(url:any,data:any){
+    return this.http.post(this.baseurl+url,data)
+
+  }
+
+
+  // gpost(url:any,data:any){
+  //   return this.http.get(this.baseurl+url,data);
+  // }
+
+  // sample(url:any,data:any){
+  //   return this.http.post(this.baseurl+url,data);
+  // }
+
   
-
-  gpost(url:any,data:any){
-    return this.http.get(this.baseurl+url,data);
-  }
-
-  sample(url:any,data:any){
-    return this.http.post(this.baseurl+url,data);
-  }
 
  
 
- 
-
   
 
 
-  pro(url:any){
-    this.token = new HttpHeaders({'Authorization':"bearer "+localStorage.getItem('token')})
-    return this.http.get(this.baseurl+url , {headers:this.token})
-  }
+ 
 
  
 

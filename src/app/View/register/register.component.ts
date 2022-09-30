@@ -33,16 +33,17 @@ export class RegisterComponent implements OnInit {
     })
   }
 
-  submit(){
+  register(){
     console.log("data",this.registerForm.value);
-    this.subService.post(this.registerForm.value).subscribe(data=>{
+    this.subService.register(this.registerForm.value).subscribe(data=>{
       this.data=data;
       console.log("okregister",this.data);
       if(this.data!=null){
         Swal.fire({
           'title':'Registered Successfully!',
           'icon':'success',
-          'timer':1500
+          'timer':1500,
+          'showConfirmButton':false
       })
         this.router.navigate(['/'])
       }
@@ -51,19 +52,5 @@ export class RegisterComponent implements OnInit {
       alert('Required Fields are Empty!')
     })
   }
-
-    // this.subService.post(this.registerForm.value).subscribe((data: any)=>{
-    //   console.log(data);
-    //   if(data!=null){
-    //     this.router.navigate(['/one'])
-
-    //   }
-
-
-      
-    // })
-
-    
-  // }
 
 }

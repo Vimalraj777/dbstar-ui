@@ -18,6 +18,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatIconModule} from '@angular/material/icon';
 import {MatListModule} from '@angular/material/list';
 import {MatButtonModule} from '@angular/material/button';
+import { ViewSchoolComponent } from './View/view-school/view-school.component';
+import { SchoolPostComponent } from './View/school-post/school-post.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import {MatButtonModule} from '@angular/material/button';
     DashboardComponent,
     UserComponent,
     SchoolComponent,
+    ViewSchoolComponent,
+    SchoolPostComponent,
   ],
   imports: [
     BrowserModule,

@@ -24,9 +24,9 @@ export class HomeComponent implements OnInit {
       console.log('data id',this.data.id)
 
       // this.step=0;
-      if(this.data.id==19297){
-        this.step=1;
-      }
+      // if(this.data.id==19297){
+      //   this.step=1;
+      // }
       
     },error=>{
       this.route.navigate(['/one'])
@@ -40,10 +40,13 @@ export class HomeComponent implements OnInit {
     this.route.navigate(['home/user'])
   }
 
-  Submit(){
+  school(){
     // this.id=[this.data,this.data.id];
    
     this.route.navigate(['home/school'])
+  }
+  viewSchool(){
+    this.route.navigate(['home/viewschool'])
   }
 
   logout(){

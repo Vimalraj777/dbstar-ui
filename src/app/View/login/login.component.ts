@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
     this.step-=1;
   }
 
-  submit(){
+  login(){
 
     this.form = new FormData();
     this.form.append('username',this.loginForm.controls['username'].value);
@@ -74,7 +74,7 @@ export class LoginComponent implements OnInit {
     forgot(){
       console.log("function calling is correct");
       
-      this.subService.forgot(this.loginForm.value).subscribe((arg:any)=>{
+      this.subService.forgotPassword(this.loginForm.value).subscribe((arg:any)=>{
         console.log(arg);
         this.pin=arg;
         if(this.pin.detail==null){
@@ -95,13 +95,15 @@ export class LoginComponent implements OnInit {
       console.log("change password",this.loginForm.value);
       
       this.subService.changepass(this.loginForm.value).subscribe((arg:any)=>{
-        console.log(arg);
+        console.log(arg); 
         this.password=arg;
         if(this.password.detail==null){
           Swal.fire({
             title:'Changed Password Successfully!!',
             icon:'success',
-            timer:1500
+            timer:1500,
+            showConfirmButton:false
+
           })
           this.step=1;
         }

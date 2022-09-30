@@ -9,9 +9,24 @@ export class SubServiceService {
 
   constructor(private Mainservice:MainServiceService) { }
 
+  register(data:any){
+    const url="/register" 
+    return this.Mainservice.register(url,data);
+  }
+
+
   login(data:any){
     const url="/Login"
     return this.Mainservice.login(url,data);
+  }
+
+  forgotPassword(data:any){
+    const url="/forgotpassword"
+    return this.Mainservice.forgotPassword(url,data);
+  }
+  changepass(data:any){
+    const url="/changepassword"
+    return this.Mainservice.changepass(url,data);
   }
 
  // This get Method is for Home Component OnInit method.
@@ -21,88 +36,90 @@ export class SubServiceService {
   }
 
 
-  profile(){
-    const path = "/profile"
-    return this.Mainservice.profile(path);
+  userget(){
+    const path = "/getuser"
+    return this.Mainservice.userget(path);
 
   }
 
 
-  Post(data:any){
-    const path="/sqlalchemy" 
-    return this.Mainservice.Post(path,data);
+  updateUser(data:any){
+    const path="/updateUser" 
+    return this.Mainservice.updateUser(path,data);
+}
+
+deleteUser(){
+  const url="/deleteUser" 
+  return this.Mainservice.deleteUser(url);
 }
 
 
 
-po(data:any){
-  const url="/post" 
-  return this.Mainservice.po(url,data);
+postSchool(data:any){
+  const url="/postSchool" 
+  return this.Mainservice.postSchool(url,data);
 }
 
 
-profileget(){
-  const path="/profileget" 
-    return this.Mainservice.profileget(path);
+getSchool(){
+  const path="/getSchool" 
+    return this.Mainservice.getSchool(path);
 }
 
 
-profileput(data:any){
-  const path="/profileput" 
-  return this.Mainservice.profileput(path,data);
-}
-
-deleted(){
-  const url="/deleted" 
-  return this.Mainservice.deleted(url);
-}
-forgot(data:any){
-  const url="/forgot"
-  return this.Mainservice.forgot(url,data);
-}
-changepass(data:any){
-  const url="/change"
-  return this.Mainservice.changepass(url,data);
+updateSchool(data:any){
+  const path="/updateSchool" 
+  return this.Mainservice.updateSchool(path,data);
 }
 
 
 
 
+homepageget(){
+  const path="/homepageget" 
+    return this.Mainservice.homepageget(path);
+}
 
 
+getSchoolPost(data:any){
+  const url="/getSchoolPost/"
+  const path=url+data
+  return this.Mainservice.getSchoolPost(path);
+}
+
+updatePostSchool(data:any){
+  const url="/updatePostSchool/"
+  const path=url+data.id
+  return this.Mainservice.updatePostSchool(path,data)
+}
+postSchoolPost(data:any){
+  const url='/postSchoolPost'
+  return this.Mainservice.postSchoolPost(url,data)
+}
 
 
-  post(data:any){
-    const url="/sqlalchemy" 
-    return this.Mainservice.post(url,data);
-  }
-
-
-  sample(data:any){
-    const url="/sample"
-    return this.Mainservice.sample(url,data);
-  }
-
- 
-
-  gpost(data:any){
-    const url="/get" 
-    const path=url+data.id
-    return this.Mainservice.gpost(path,data);
-  }
-
-
- 
   
 
-  pro(){
+  pro(){  
     const url="/profile"
     this.Mainservice.pro(url);
   }
 
+
+
+
+
+  // sample(data:any){
+  //   const url="/sample"
+  //   return this.Mainservice.sample(url,data);
+  // }
+
+  // gpost(data:any){
+  //   const url="/get" 
+  //   const path=url+data.id
+  //   return this.Mainservice.gpost(path,data);
+  // }
+
  
-
-
-
 
 }

@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="card m-5 p-3">
+        <div class="card-body">
+            <table class="table table-bordered table-striped table-hover">
+                <thead>
+                <tr>
+                    <th rowspan="2">Id</th>
+                    <th rowspan="2">Institution Name</th>
+                    <th rowspan="2">Location</th>
+                    <th rowspan="2">Correspondent Name</th>
+                    <th rowspan="2">Class Rooms</th>
+                    <th rowspan="2">CCTV</th>
+                    <th colspan="1">Actions</th>
+                </tr>
+                <tr>
+                    <th style="text-align: center;"><button style="text-decoration: none;" class="btn btn-outline-primary" (click)="Add()">+</button></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let user of allUsers">
+                    <td>{{user.id}}</td>
+                    <td>{{ user.institutionName }}</td>
+                    <td>{{ user.location }}</td>
+                    <td>{{ user.correspondentName }}</td>
+                    <td>{{ user.classRooms }}</td>
+                    <td>{{ user.cctv}}</td>
+                    <td style="text-align: center;"><button (click)="Update(user.id)">Update</button></td>     
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>

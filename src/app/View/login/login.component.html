@@ -13,13 +13,21 @@
     
                 <div *ngIf="step==1" class="col-md-3" style="background-color:white;">
                     <h2 class="ms-5" id="h1">Login Page </h2>
-                    <br /><input class="form-control" type="text" formControlName="username" style="color: #5b0e2d;" placeholder="User Name" required>
-                    <div *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched" style="color:red">required</div>
-                    <input type="text" class="form-control mt-2" formControlName="password" style="color: #5b0e2d;" placeholder="Password" required>
-                    <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" style="color:red;">required</div>
+
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fa fa-user"></i></span>
+                        <br /><input class="form-control" type="text" formControlName="username" style="color: #5b0e2d;" placeholder="User Name" required>
+                        <div *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched" style="color:red">required</div>
+                    </div>
+
+                    <div class="input-group">
+                        <span class="input-group-text mt-2"><i class="fa fa-lock"></i></span>
+                        <input type="text" class="form-control mt-2" formControlName="password" style="color: #5b0e2d;" placeholder="Password" required>
+                        <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" style="color:red;">required</div>
+                    </div>
                     <div class="row">
                         <div class="col">
-                        <button class="btn mt-3 btn btn-primary" type="submit" (click)="submit()" value="Login" style="color: white;width: 100px;">Login</button>
+                        <button class="btn mt-3 btn btn-primary" type="submit" (click)="login()" value="Login" style="color: white;width: 100px;">Login</button>
                         
                         <button class="btn btn btn-primary mt-3 ms-5"  routerLink="/register" style="color: white;">Register</button>
                     </div>

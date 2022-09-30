@@ -12,23 +12,34 @@
     <div class="col-md-4">
         <div class="row mt-1">
             <label><b>Roll No</b></label>
+            <div class="input-group">
+                <span class="input-group-text"><i class="fa fa-user"></i></span>
             <br/><input type="number" formControlName="id" placeholder="ID" readonly style="background-color:gainsboro;" class="form-control"><br/><br/>
+            </div>
         </div>
         <div class="row mt-1">
             <label><b>User Name</b></label>
+            <div class="input-group">
+                <span class="input-group-text"><i class="fa fa-user-tie"></i></span>
             <input type="text" formControlName="username" placeholder="User Name" readonly style="background-color:gainsboro;" class="form-control"><br/><br/>
-
+        </div>
         </div>
         
         <div class="row mt-1">
             <label><b>Name</b></label>
+            <div class="input-group">
+                <span class="input-group-text"><i class="fa fa-user-circle"></i></span>
             <input type="text" formControlName="name" placeholder="Name" class="form-control" required><br/><br/>
             <div *ngIf="profileForm.get('name')?.invalid && profileForm.get('name')?.touched" style="color:red">required</div>
+            </div>
         </div>
         <div class="row mt-1">
             <label><b>Age</b></label>
+            <div class="input-group">
+                <span class="input-group-text"><i class="fa fa-sort-numeric-up-alt"></i></span>
             <input type="text" formControlName="age" placeholder="Age" class="form-control" required><br/><br/>
             <div *ngIf="profileForm.get('age')?.touched && profileForm.get('age')?.invalid" style="color:red">required</div>
+            </div>
         </div>
     </div>
 
@@ -36,24 +47,36 @@
     <div class="col-md-4">
         <div class="row mt-1">
             <label><b>Father Name</b></label>
+            <div class="input-group">
+                <span class="input-group-text"><i class="fa fa-male"></i></span>
             <input type="text" formControlName="fname" placeholder="Father Name" class="form-control" required><br/><br/>
             <div *ngIf="profileForm.get('fname')?.touched && profileForm.get('fname')?.invalid" style="color:red">required</div>
+            </div>
         </div>
         <div class="row mt-1">
             <label><b>Mother Name</b></label>
+            <div class="input-group">
+                <span class="input-group-text"><i class="fa fa-female"></i></span>
             <input type="text" formControlName="mname" placeholder="Mother Name" class="form-control" required><br/><br/>
             <div *ngIf="profileForm.get('mname')?.touched && profileForm.get('mname')?.invalid" style="color: red;">required</div>
+            </div>
         </div>
  
         <div class="row mt-1">
             <label><b>Phone Number</b></label>
+            <div class="input-group">
+                <span class="input-group-text"><i class="fa fa-phone"></i></span>
             <input type="text" formControlName="phnumber" placeholder="Phone Number" class="form-control" minlength="10" maxlength="10" required ><br/><br/>
             <div *ngIf="profileForm.get('phnumber')?.touched && profileForm.get('phnumber')?.invalid" style="color:red;">Enter 10 Digits</div>
+            </div>
         </div>
         <div class="row mt-1">
             <label><b>Address</b></label>
+            <div class="input-group">
+                <span class="input-group-text"><i class="fa fa-map-signs"></i></span>
             <textarea formControlName="address" placeholder="Address" class="form-control" required=""></textarea><br/><br/>
             <div *ngIf="profileForm.get('address')?.touched && profileForm.get('address')?.invalid" style="color:red;">required</div>
+            </div>
         </div>
     </div>
 
@@ -65,9 +88,9 @@
 
 <div class="card-footer row">
     <div class="col-md-2"></div>
-    <div class="col-md-1"><input type="button" value="Cancel"class="btn btn-secondary" (click)="cancel()"></div>
+    <!-- <div class="col-md-1"><input type="button" value="Cancel"class="btn btn-secondary" (click)="cancel()"></div> -->
     <div class="col-md-2"></div>
-    <div class="col-md-1"><input type="button" value="Save"class="btn btn-success" (click)="submit()"></div>
+    <div class="col-md-1"><input type="button" value="Save"class="btn btn-success" (click)="update()"></div>
     <div class="col-md-2"></div>
     <div class="col-md-1"><input type="button" value="Delete"class="btn btn-danger" (click)="deleted()"></div>
 </div>

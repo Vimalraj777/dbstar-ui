@@ -1,27 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormBuilder, FormArray } from '@angular/forms';
 import { SubServiceService } from 'src/app/Service/sub-service.service';
-import { Router} from '@angular/router';
+import { Router , ActivatedRoute} from '@angular/router';
 import Swal from 'sweetalert2';
 
 
 @Component({
-  selector: 'app-school',
-  templateUrl: './school.component.html',
-  styleUrls: ['./school.component.scss']
+  selector: 'app-school-post',
+  templateUrl: './school-post.component.html',
+  styleUrls: ['./school-post.component.scss']
 })
-export class SchoolComponent implements OnInit {
+export class SchoolPostComponent implements OnInit {
   generalForm!:FormGroup;
   Data:any;
   id:any;
   data:any;
+  schoolid:any;
   
 
 
-  constructor(private fb:FormBuilder , private sub:SubServiceService , private route:Router ) { }
+  constructor(private fb:FormBuilder , private sub:SubServiceService , private route:Router , private active:ActivatedRoute) { }
   step=0;
   butt=0;
   index=new Array(19);
+
 
 
   ngOnInit(): void {
@@ -31,40 +33,40 @@ export class SchoolComponent implements OnInit {
 
     this.generalForm=this.fb.group({
       School1:this.fb.group({
-        id:[''],
-        institutionName:[''],
-        state:[''],
-        urlName:[''],
-        officeEmailId:[''],
-        district:[''],
-        pincode:[''],
-        specialNeeds:[''],
-        yearOfEstablish:[''],
-        natureOfAffiliation:[''],
-        currentNoOfGirls:[''],
-        totalOfNonTeachingStaff:[''],
+        id:[],
+        institutionName:[],
+        state:[],
+        urlName:[],
+        officeEmailId:[],
+        district:[],
+        pincode:[],
+        specialNeeds:[],
+        yearOfEstablish:[],
+        natureOfAffiliation:[],
+        currentNoOfGirls:[],
+        totalOfNonTeachingStaff:[],
       }),
       School2:this.fb.group({
-        location:[''],
-        postalAddress:[''],
-        city:[''],
-        officialPhoneNumber:[''],
-        assessmentAcademicYear:[''],
-        gender:[''],
-        correspondentEmailId:[''],
-        schoolLevel:[''],
-        principalOrHeadMobileNo:[''],
+        location:[],
+        postalAddress:[],
+        city:[],
+        officialPhoneNumber:[],
+        assessmentAcademicYear:[],
+        gender:[],
+        correspondentEmailId:[],
+        schoolLevel:[],
+        principalOrHeadMobileNo:[],
       }),
       School3:this.fb.group({
-        totalNoOfTeachingStaff:[''],
-        totalBoys:[''],
-        correspondentName:[''],
-        medium:[''],     
-        currentNoOfStudents:[''],
-        correspondentMobileNo:[''],
-        nameOfPrincipal:[''],
-        principalOrHeadEmailId:[''],
-        principalOrHeadOfficePhoneNo:[''],
+        totalNoOfTeachingStaff:[],
+        totalBoys:[],
+        correspondentName:[],
+        medium:[],     
+        currentNoOfStudents:[],
+        correspondentMobileNo:[],
+        nameOfPrincipal:[],
+        principalOrHeadEmailId:[],
+        principalOrHeadOfficePhoneNo:[],
       }),
       School4:this.fb.group({
         isInstituteRecognizedByGovt:[''],
@@ -352,27 +354,40 @@ export class SchoolComponent implements OnInit {
       
     });
 
-    this.sub.getSchool().subscribe((arg : any)=>{
-      this.generalForm.patchValue(arg);
 
-      this.data = arg;
-      // console.log("work",this.data.School19['enrollment']);
-
+    this.schoolid=this.active.snapshot.params['id']
+    console.log("school id",this.schoolid);
+    if(typeof this.schoolid == 'undefined'){
+      console.log('none');
+    }
       
-      this.data.School18['scholarship'].forEach((element:any) => {
-        
-         this.Scholarship().push(this.loadScholarship(element))        
-      });
+    else{
+      //Put Method
+      this.sub.getSchoolPost(this.schoolid).subscribe((arg:any)=>{
+        console.log(arg);
+        this.generalForm.patchValue(arg);
+        this.data=arg;
 
-      this.data.School19['enrollment'].forEach((element:any) => {
+        if(this.data.School18['scholarship']){
+          this.data.School18['scholarship'].forEach((element:any) => {
         
-        this.Enrollment().push(this.loadEnrollment(element))        
-     });
-   
-   
-      // this.loadData(); 
-    })
-    this.next();
+            this.Scholarship().push(this.loadScholarship(element))        
+         });
+        }
+
+        if(this.data.School19['enrollment']){
+          this.data.School19['enrollment'].forEach((element:any) => {
+         
+            this.Enrollment().push(this.loadEnrollment(element))        
+         });
+
+        }
+      })
+      
+      
+    }
+
+     this.next();
     
   }
 
@@ -786,7 +801,7 @@ export class SchoolComponent implements OnInit {
   // submit(data1:any){
   //   console.log("data",this.generalForm.value);
 
-  //   this.sub.postSchool(this.generalForm.controls[data1].value).subscribe((data:any)=>{
+  //   this.sub.po(this.generalForm.controls[data1].value).subscribe((data:any)=>{
   //     console.log(data);
   //     this.Data=data;
   //     Swal.fire({
@@ -806,8 +821,17 @@ export class SchoolComponent implements OnInit {
 
 
   submit(data:any){
-        
-    this.sub.updateSchool(this.generalForm.controls[data].value).subscribe((data:any)=>{
+    if(typeof this.schoolid=='undefined'){
+      // console.log("hi this is vimal");
+      var submitData = Object.assign({'profileId':this.generalForm.get('School1.id')?.value} , this.generalForm.controls[data].value)
+      this.sub.postSchoolPost(submitData).subscribe((data:any)=>{
+        console.log(data);
+      })
+      
+
+    }
+    else{
+    this.sub.updatePostSchool(this.generalForm.controls[data].value).subscribe((data:any)=>{
       console.log(data);
       // this.data='mercy'+data
       this.Data=data;
@@ -820,6 +844,7 @@ export class SchoolComponent implements OnInit {
       })
 
     })
+  }
   }
   }
  
