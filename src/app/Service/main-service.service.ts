@@ -95,6 +95,10 @@ changepass(url:any,data:any){
 
   }
 
+  DeleteSchool(url:any){
+    return this.http.delete(this.baseurl+url)
+  }
+
 
   // gpost(url:any,data:any){
   //   return this.http.get(this.baseurl+url,data);

@@ -89,7 +89,7 @@ export class UserComponent implements OnInit {
           Swal.fire({
             title:'Deleted!',
             showConfirmButton:false,
-            text:'Your file has been deleted.',
+            text:'Deleted User Successfully',
             icon:'success',
             timer:1500
         })

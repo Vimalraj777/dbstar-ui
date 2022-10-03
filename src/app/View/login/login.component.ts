@@ -21,6 +21,8 @@ export class LoginComponent implements OnInit {
   raise:any;
   otp1:any;
   invalid:any;
+  logerror:any;
+  
 
   constructor(private fb:FormBuilder,private subService:SubServiceService,private router:Router) { }
 
@@ -61,11 +63,12 @@ export class LoginComponent implements OnInit {
          showConfirmButton:false,
          timer:1500
        })
-        this.router.navigate(['/home'])
+        this.router.navigate(['/home/dashboard'])
       }
      
     },(errors:any)=>{
-      alert("Invalid Credentials");
+      // alert("Invalid Credentials");
+      this.logerror='Invalid Credentials'
       
     })
    
@@ -78,7 +81,6 @@ export class LoginComponent implements OnInit {
         console.log(arg);
         this.pin=arg;
         if(this.pin.detail==null){
-          // alert("Your OTP is "+this.pin)
           this.otp1=this.pin
           this.next()
         } 
@@ -114,7 +116,4 @@ export class LoginComponent implements OnInit {
       })
 
     }
-    
-    
-
 }

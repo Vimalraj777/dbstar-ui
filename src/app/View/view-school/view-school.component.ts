@@ -33,4 +33,32 @@ allUsers: any = [];
  Add(){
   this.route.navigate(['home/postschool'])
  }
+
+ Delete(data:any){
+
+  Swal.fire({
+    title: 'Are you sure?',
+    text: "You won't be able to undo this!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, delete it!'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      this.sub.DeleteSchool(data).subscribe((data:any)=>{
+          console.log(data);
+        
+        Swal.fire({
+          title:'Deleted!',
+          showConfirmButton:false,
+          text:'Your file has been deleted.',
+          icon:'success',
+          timer:1500
+      })
+      location.reload()
+      })
+    }
+  }) 
+ }
 }

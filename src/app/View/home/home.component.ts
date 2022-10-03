@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { text } from 'express';
 import { SubServiceService } from 'src/app/Service/sub-service.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-home',
@@ -8,53 +10,66 @@ import { SubServiceService } from 'src/app/Service/sub-service.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  data:any;
-  step:any;
+  data: any;
+  step: any;
 
-  constructor(private route:Router , private subservice:SubServiceService) { }
+  constructor(private route: Router, private subservice: SubServiceService) { }
 
   ngOnInit(): void {
-     if(localStorage.getItem('token')==null){
+    if (localStorage.getItem('token') == null) {
       alert("session ended");
       this.route.navigate(['/one'])
     }
-    this.subservice.get().subscribe(data=>{
-      this.data=data;
+    this.subservice.get().subscribe(data => {
+      this.data = data;
       console.log(data);
-      console.log('data id',this.data.id)
+      console.log('data id', this.data.id)
 
-      // this.step=0;
-      // if(this.data.id==19297){
-      //   this.step=1;
-      // }
-      
-    },error=>{
+    }, error => {
       this.route.navigate(['/one'])
     })
 
   }
 
-  submit(){
-    // this.id=[this.data,this.data.id];
-   
+  submit() {
+
     this.route.navigate(['home/user'])
   }
 
-  school(){
-    // this.id=[this.data,this.data.id];
-   
+  school() {
+
     this.route.navigate(['home/school'])
   }
-  viewSchool(){
+  viewSchool() {
     this.route.navigate(['home/viewschool'])
   }
 
-  logout(){
-    localStorage.clear();
-    this.route.navigate(['/']);
+  logout() {
+    Swal.fire({
+      title:'Are You Sure?',
+      icon:'question',
+      showCancelButton:true,
+      showConfirmButton:true,
+      cancelButtonText:'Cancel',
+      confirmButtonText:'Logout'
+
+    }).then(result=>{
+      if(result.isConfirmed){
+        localStorage.clear();
+        Swal.fire({
+          title:'Logged Out Successfully',
+          icon:'success',
+          showConfirmButton:false,
+          timer:1200
+        })
+        this.route.navigate(['/']);
+      }
+    })
+    
+    
 
   }
-  dashboard(){
+  dashboard() {
     this.route.navigateByUrl("home/dashboard")
   }
 

@@ -1,6 +1,7 @@
 <div class="container">
     <div class="card m-5 p-3">
         <div class="card-body">
+            <h2 style="text-align: center;"><b>Records of School Profile</b></h2>
             <table class="table table-bordered table-striped table-hover">
                 <thead>
                 <tr>
@@ -24,7 +25,7 @@
                     <td>{{ user.correspondentName }}</td>
                     <td>{{ user.classRooms }}</td>
                     <td>{{ user.cctv}}</td>
-                    <td style="text-align: center;"><button (click)="Update(user.id)">Update</button></td>     
+                    <td style="text-align: center;"><button class="btn btn-outline-info form-control" (click)="Update(user.id)">Update</button><button class="btn btn-outline-danger form-control" (click)="Delete(user.id)">Delete</button></td>     
                 </tr>
                 </tbody>
             </table>

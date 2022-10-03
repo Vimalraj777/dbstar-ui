@@ -97,6 +97,12 @@ postSchoolPost(data:any){
   return this.Mainservice.postSchoolPost(url,data)
 }
 
+DeleteSchool(data:any){
+  const path='/deleteSchool/'
+  const url=path+data
+  return this.Mainservice.DeleteSchool(url);
+}
+
 
   
 
