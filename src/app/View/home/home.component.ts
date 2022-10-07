@@ -16,9 +16,16 @@ export class HomeComponent implements OnInit {
   constructor(private route: Router, private subservice: SubServiceService) { }
 
   ngOnInit(): void {
-    if (localStorage.getItem('token') == null) {
-      alert("session ended");
-      this.route.navigate(['/one'])
+    if(localStorage.getItem('token')==null){
+      Swal.fire({
+        title:'Session Has Expired',
+        text:'Login Again To Continue',
+        icon:'error',
+        showConfirmButton:false,
+        timer:1200
+      })
+      this.route.navigate(['/'])
+
     }
     this.subservice.get().subscribe(data => {
       this.data = data;
@@ -32,15 +39,45 @@ export class HomeComponent implements OnInit {
   }
 
   submit() {
+    if(localStorage.getItem('token')==null){
+      Swal.fire({
+        title:'Session Has Expired',
+        text:'Login Again To Continue',
+        icon:'error',
+        showConfirmButton:false,
+        timer:1200
+      })
+      this.route.navigate(['/'])
+    }
 
     this.route.navigate(['home/user'])
   }
 
   school() {
+    if(localStorage.getItem('token')==null){
+      Swal.fire({
+        title:'Session Has Expired',
+        text:'Login Again To Continue',
+        icon:'error',
+        showConfirmButton:false,
+        timer:1200
+      })
+      this.route.navigate(['/'])
+    }
 
     this.route.navigate(['home/school'])
   }
   viewSchool() {
+    if(localStorage.getItem('token')==null){
+      Swal.fire({
+        title:'Session Has Expired',
+        text:'Login Again To Continue',
+        icon:'error',
+        showConfirmButton:false,
+        timer:1200
+      })
+      this.route.navigate(['/'])
+    }
     this.route.navigate(['home/viewschool'])
   }
 

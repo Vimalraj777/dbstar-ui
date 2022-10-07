@@ -74,6 +74,7 @@ export class LoginComponent implements OnInit {
    
     }
 
+
     forgot(){
       console.log("function calling is correct");
       
